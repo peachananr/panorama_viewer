@@ -75,123 +75,128 @@
     return this.each(function(){
       var settings = $.extend({}, defaults, options),
       el = $(this);
-      el.find("> img").addClass("pv-pano");
-      el.addClass("pv-container").wrapInner("<div class='pv-inner pv-animating'></div>");
       
-      if (settings.direction == "vertical") {
-         el.addClass("pv-vertical")
-      }
-      
-      el.find(".pv-animating").css({
-        "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
-        "-moz-transition": "all " + settings.animationTime + "ms " + settings.easing,
-        "-ms-transition": "all " + settings.animationTime + "ms " + settings.easing,
-        "transition": "all " + settings.animationTime + "ms " + settings.easing
-      })
-      imgSrc = el.find(".pv-pano").attr("src")
-      width = el.find(".pv-pano").width()
-      height = el.find(".pv-pano").height()
-      var repeat = "no-repeat";
-      if (settings.repeat == true) {
-        repeat = "repeat"
-      }
-      
-      el.find(".pv-inner").css({
-        height: height,
-        width: width,
-        background: "url(" + imgSrc + ") " + repeat,
-        "background-size": "cover"
-      })
-      
-      if (settings.overlay == true) {
-        $("<div class='pv-overlay'><i class='pvicon-overlay'></i></div>").appendTo(el.find(".pv-inner"))
-        
-        el.find(".pv-inner").bind("mouseenter", function() {
-          $(this).find(".pv-overlay ").fadeOut("fast");
-        }).bind("mouseleave", function() {
-          $(this).find(".pv-overlay ").fadeIn("fast");
-        })
-      }
-      
-      
-    	var $bg = el.find(".pv-inner"),
-      elbounds = {
-        w: parseInt($bg.parent().width()),
-        h: parseInt($bg.parent().height())
-      },
-      bounds = {w: width - elbounds.w, h: height - elbounds.h},
-      origin = {x: 0, y: 0},
-      start = {x: 0, y: 0},
-      movecontinue = false;
-      
-      function move (e){
-        
-        var inbounds = {x: false, y: false},
-            offset = {
-                x: start.x - (origin.x - e.clientX),
-                y: start.y - (origin.y - e.clientY)
-            };
-        if (settings.direction == "horizontal") {
-          if (settings.repeat == true) {
-            inbounds.x = true;
-          } else {
-            inbounds.x = offset.x < 0 && (offset.x * -1) < bounds.w;
-          }
-          
-          if (movecontinue && inbounds.x) {
-              start.x = offset.x;
-              start.y = 0;
-          }
-        } else {
-          if (settings.repeat == true) {
-            inbounds.y = true;
-          } else {
-            inbounds.y = offset.y < 0 && (offset.y * -1) < bounds.h;
-          }
-          
-          if (movecontinue && inbounds.y) {
-              start.y = offset.y;
-              start.x = 0;
-          }
-        }
-        
-        $(this).css('background-position', start.x + 'px ' + start.y + 'px');
-        
-        
-        origin.x = e.clientX;
-        origin.y = e.clientY;
-        
-        e.stopPropagation();
-        return false;
-      }
+      el.find("> img").load(function () {
+        el.find("> img").addClass("pv-pano");
+        el.addClass("pv-container").wrapInner("<div class='pv-inner pv-animating'></div>");
 
-      function handle (e){
-          movecontinue = false;
-          $bg.unbind('mousemove', move);
-          
-          if (e.type == 'mousedown') {
-              origin.x = e.clientX;
-              origin.y = e.clientY;
-              movecontinue = true;
-              $bg.bind('mousemove', move);
+        if (settings.direction == "vertical") {
+           el.addClass("pv-vertical")
+        }
+
+        el.find(".pv-animating").css({
+          "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
+          "-moz-transition": "all " + settings.animationTime + "ms " + settings.easing,
+          "-ms-transition": "all " + settings.animationTime + "ms " + settings.easing,
+          "transition": "all " + settings.animationTime + "ms " + settings.easing
+        })
+        imgSrc = el.find(".pv-pano").attr("src")
+        width = el.find(".pv-pano").width()
+        height = el.find(".pv-pano").height()
+        var repeat = "no-repeat";
+        if (settings.repeat == true) {
+          repeat = "repeat"
+        }
+
+        el.find(".pv-inner").css({
+          height: height,
+          width: width,
+          background: "url(" + imgSrc + ") " + repeat,
+          "background-size": "cover"
+        })
+
+        if (settings.overlay == true) {
+          $("<div class='pv-overlay'><i class='pvicon-overlay'></i></div>").appendTo(el.find(".pv-inner"))
+
+          el.find(".pv-inner").bind("mouseenter", function() {
+            $(this).find(".pv-overlay ").fadeOut("fast");
+          }).bind("mouseleave", function() {
+            $(this).find(".pv-overlay ").fadeIn("fast");
+          })
+        }
+
+
+      	var $bg = el.find(".pv-inner"),
+        elbounds = {
+          w: parseInt($bg.parent().width()),
+          h: parseInt($bg.parent().height())
+        },
+        bounds = {w: width - elbounds.w, h: height - elbounds.h},
+        origin = {x: 0, y: 0},
+        start = {x: 0, y: 0},
+        movecontinue = false;
+
+        function move (e){
+
+          var inbounds = {x: false, y: false},
+              offset = {
+                  x: start.x - (origin.x - e.clientX),
+                  y: start.y - (origin.y - e.clientY)
+              };
+          if (settings.direction == "horizontal") {
+            if (settings.repeat == true) {
+              inbounds.x = true;
+            } else {
+              inbounds.x = offset.x < 0 && (offset.x * -1) < bounds.w;
+            }
+
+            if (movecontinue && inbounds.x) {
+                start.x = offset.x;
+                start.y = 0;
+            }
           } else {
-            $(document.body).focus();
+            if (settings.repeat == true) {
+              inbounds.y = true;
+            } else {
+              inbounds.y = offset.y < 0 && (offset.y * -1) < bounds.h;
+            }
+
+            if (movecontinue && inbounds.y) {
+                start.y = offset.y;
+                start.x = 0;
+            }
           }
+
+          $(this).css('background-position', start.x + 'px ' + start.y + 'px');
+
+
+          origin.x = e.clientX;
+          origin.y = e.clientY;
 
           e.stopPropagation();
           return false;
-      }
+        }
 
-      function reset (){
-          start = {x: 0, y: 0};
-          $(this).css('backgroundPosition', '0 0');
-      }
+        function handle (e){
+            movecontinue = false;
+            $bg.unbind('mousemove', move);
+
+            if (e.type == 'mousedown') {
+                origin.x = e.clientX;
+                origin.y = e.clientY;
+                movecontinue = true;
+                $bg.bind('mousemove', move);
+            } else {
+              $(document.body).focus();
+            }
+
+            e.stopPropagation();
+            return false;
+        }
+
+        function reset (){
+            start = {x: 0, y: 0};
+            $(this).css('backgroundPosition', '0 0');
+        }
+
+
+        $bg.bind('mousedown mouseup mouseleave', handle);
+        $bg.bind('dblclick', reset);
+
+        el.find(".pv-pano").hide()
+      })
       
       
-      $bg.bind('mousedown mouseup mouseleave', handle);
-      $bg.bind('dblclick', reset);
-      
-      el.find(".pv-pano").hide()
     });
     
   }
