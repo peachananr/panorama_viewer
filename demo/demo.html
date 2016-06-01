@@ -15,7 +15,7 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script type="text/javascript" src="../jquery.panorama_viewer.js"></script>
+  <script type="text/javascript" src="jquery.panorama_viewer.js"></script>
   <link href='panorama_viewer.css' rel='stylesheet' type='text/css'>
   <style>
     html {
@@ -265,8 +265,7 @@
   // Use $(window).load() on live site instead of document ready. This is for the purpose of running locally only
     $(document).ready(function(){
       $(".panorama").panorama_viewer({
-        repeat: false,
-        centerX: -500,
+        repeat: true
       });
     });
 
