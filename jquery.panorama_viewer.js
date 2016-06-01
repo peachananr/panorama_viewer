@@ -12,15 +12,16 @@
  * ========================================================== */
 
 !function($){
-  
+
   var defaults = {
     repeat: false,
     direction: "horizontal",
-		animationTime: 700,
-		easing: "ease-out",
-		overlay: true
-	};
-	
+    animationTime: 700,
+    easing: "ease-out",
+    overlay: true,
+    centerX: 0,
+  };
+
   function Timer(callback, delay) {
       var timerId, start, remaining = delay;
 
@@ -36,8 +37,8 @@
 
       this.resume();
   }
-  
-	function touchHandler(event)
+
+  function touchHandler(event)
   {
       var touches = event.changedTouches,
           first = touches[0],
@@ -46,19 +47,19 @@
            switch(event.type)
       {
           case "touchstart": type = "mousedown"; break;
-          case "touchmove":  type="mousemove"; break;        
+          case "touchmove":  type="mousemove"; break;
           case "touchend":   type="mouseup"; break;
           default: return;
       }
 
       var simulatedEvent = document.createEvent("MouseEvent");
-      
+
       var mult = 2;
-      
+
       if( navigator.userAgent.match(/Android/i) ) {
           mult = 10
       }
-      
+
       simulatedEvent.initMouseEvent(type, true, true, window, 1,
                                 first.screenX, first.screenY,
                                 (first.clientX * mult), (first.clientY * mult), false,
@@ -66,16 +67,16 @@
       first.target.dispatchEvent(simulatedEvent);
   }
   $.fn.panorama_viewer = function(options){
-    
+
     document.addEventListener("touchstart", touchHandler, true);
     document.addEventListener("touchmove", touchHandler, true);
     document.addEventListener("touchend", touchHandler, true);
     document.addEventListener("touchcancel", touchHandler, true);
-    
+
     return this.each(function(){
       var settings = $.extend({}, defaults, options),
       el = $(this);
-      
+
       el.find("> img").load(function () {
         el.find("> img").addClass("pv-pano");
         el.addClass("pv-container").wrapInner("<div class='pv-inner pv-animating'></div>");
@@ -102,7 +103,8 @@
           height: height,
           width: width,
           background: "url(" + imgSrc + ") " + repeat,
-          "background-size": "cover"
+          "background-size": "cover",
+          "background-position": settings.centerX,
         })
 
         if (settings.overlay == true) {
@@ -116,14 +118,14 @@
         }
 
 
-      	var $bg = el.find(".pv-inner"),
+        var $bg = el.find(".pv-inner"),
         elbounds = {
           w: parseInt($bg.parent().width()),
           h: parseInt($bg.parent().height())
         },
         bounds = {w: width - elbounds.w, h: height - elbounds.h},
         origin = {x: 0, y: 0},
-        start = {x: 0, y: 0},
+        start = {x: settings.centerX, y: 0},
         movecontinue = false;
 
         function move (e){
@@ -185,8 +187,8 @@
         }
 
         function reset (){
-            start = {x: 0, y: 0};
-            $(this).css('backgroundPosition', '0 0');
+            start = {x: settings.centerX, y: 0};
+            $(this).css('backgroundPosition', settings.centerX + 'px 0');
         }
 
 
@@ -195,12 +197,10 @@
 
         el.find(".pv-pano").hide()
       })
-      
-      
+
+
     });
-    
+
   }
-  
+
 }(window.jQuery);
-
-
