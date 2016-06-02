@@ -1,20 +1,20 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>jQuery Panorama Viewer by Pete R. | The Pete Design</title>
-	<meta name="title" content="jQuery Panorama Viewer by Pete R. | The Pete Design" />
-	<meta name="description" content="Embed your panorama photos on your site with jQuery Panorama Viewer" />
-	<link rel="image_src" href="/images/panorama_viewer_image.png" />
+  <meta charset="utf-8">
+  <title>jQuery Panorama Viewer by Pete R. | The Pete Design</title>
+  <meta name="title" content="jQuery Panorama Viewer by Pete R. | The Pete Design" />
+  <meta name="description" content="Embed your panorama photos on your site with jQuery Panorama Viewer" />
+  <link rel="image_src" href="/images/panorama_viewer_image.png" />
 
-	<meta content="http://www.thepetedesign.com/demos/panorama_viewer_demo.html" property="og:url" />
-	<meta content="http://www.thepetedesign.com/images/panorama_viewer_image.png" property="og:image" />
-	<link rel="shortcut icon" id="favicon" href="favicon.png"> 
-	<meta name="author" content="Pete R.">
-	<link rel="canonical" href="http://www.thepetedesign.com/demos/panorama_viewer_demo.html" />
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <meta content="http://www.thepetedesign.com/demos/panorama_viewer_demo.html" property="og:url" />
+  <meta content="http://www.thepetedesign.com/images/panorama_viewer_image.png" property="og:image" />
+  <link rel="shortcut icon" id="favicon" href="favicon.png">
+  <meta name="author" content="Pete R.">
+  <link rel="canonical" href="http://www.thepetedesign.com/demos/panorama_viewer_demo.html" />
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script type="text/javascript" src="jquery.panorama_viewer.js"></script>
   <link href='panorama_viewer.css' rel='stylesheet' type='text/css'>
   <style>
@@ -30,20 +30,20 @@
       margin: 0;
       height: 100%;
     }
-    
+
     .wrapper {
-    	height: auto !important;
-    	height: 100%;
-    	margin: 0 auto; 
-    	overflow: hidden;
+      height: auto !important;
+      height: 100%;
+      margin: 0 auto;
+      overflow: hidden;
     }
-    
+
     a {
       text-decoration: none;
     }
-    
-    
-    
+
+
+
     h1, h2 {
       width: 100%;
       float: left;
@@ -68,8 +68,8 @@
       margin-top: 10px;
       margin-bottom: 0;
     }
-    
-    
+
+
     .pointer {
       color: #00B0FF;
       font-family: 'Pacifico';
@@ -106,8 +106,8 @@
       width: 100%;
       margin: 0 auto;
     }
-    
-    
+
+
     .main h1 {
       padding:20px 50px 10px;
       float: left;
@@ -123,11 +123,11 @@
       letter-spacing: -1px;
       text-transform: capitalize;
     }
-   
+
     .main h1.demo1 {
       background: #1ABC9C;
     }
-    
+
     .reload.bell {
       font-size: 12px;
       padding: 20px;
@@ -138,12 +138,12 @@
       -webkit-border-radius: 50px;
       -moz-border-radius: 50px;
     }
-    
+
     .reload.bell #notification {
       font-size: 25px;
       line-height: 140%;
     }
-    
+
     .reload, .btn{
       display: inline-block;
       border-radius: 3px;
@@ -206,7 +206,7 @@
       font-weight: bold;
       color: black;
     }
-    
+
     .back {
       position: absolute;
       top: 0;
@@ -230,8 +230,8 @@
     .back:hover {
       background: #eee;
     }
-    
-    
+
+
     .page-container {
       float: left;
       width: 100%;
@@ -245,7 +245,7 @@
       height: 700px;
       position: relative;
     }
-    
+
     .panorama .credit {
       background: rgba(0,0,0,0.2);
       color: white;
@@ -259,40 +259,40 @@
       -moz-box-sizing: border-box;
       float: right;
     }
-    
-	</style>
-	<script>
-	// Use $(window).load() on live site instead of document ready. This is for the purpose of running locally only
-	  $(document).ready(function(){
+
+  </style>
+  <script>
+  // Use $(window).load() on live site instead of document ready. This is for the purpose of running locally only
+    $(document).ready(function(){
       $(".panorama").panorama_viewer({
         repeat: true
       });
-		});
-		
-	</script>
+    });
+
+  </script>
 </head>
 <body>
   <div class="wrapper">
-	  <div class="main">
-	    <div class="header">
+    <div class="main">
+      <div class="header">
         <h1>jQuery Panorama Viewer</h1>
         <h2>Embed a Panorama Pictures on Your Website</h2>
         <p class="credit">Created by <a href="http://www.thepetedesign.com">Pete R.</a>, Founder of <a href="http://www.travelistly.com" target="_blank">Travelistly</a> and <a href="http://www.bucketlistly.com" target="_blank">BucketListly</a></p>
         <div class="btns">
-  	      <a class="reload btn" href="https://github.com/peachananr/flipping_gallery">Download on Github</a>
-  	    </div>
-  	  </div>
+          <a class="reload btn" href="https://github.com/peachananr/flipping_gallery">Download on Github</a>
+        </div>
+      </div>
       <div class="panorama">
-  	   <img src="demo_photo.jpg">
-  	   <div class="credit">
-  	     Photo by DAVID ILIFF. License: CC-BY-SA 3.0
-  	   </div>
-  	  </div>
+       <img src="demo_photo.jpg">
+       <div class="credit">
+         Photo by DAVID ILIFF. License: CC-BY-SA 3.0
+       </div>
+      </div>
     </div>
     <a class="back" href="http://www.thepetedesign.com/#design">Back to The Pete Design</a>
     <a href="https://github.com/peachananr/panorama_viewer"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
   </div>
-  
- 
+
+
 </body>
 </html>
