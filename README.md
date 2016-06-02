@@ -29,7 +29,8 @@ Make sure to change the source of the image to your image and call the function 
     direction: "horizontal",    // Let you define the direction of the scroll. Acceptable values are "horizontal" and "vertical". The default value is horizontal
     animationTime: 700,         // This allows you to set the easing time when the image is being dragged. Set this to 0 to make it instant. The default value is 700.
     easing: "ease-out",         // You can define the easing options here. This option accepts CSS easing options. Available options are "ease", "linear", "ease-in", "ease-out", "ease-in-out", and "cubic-bezier(...))". The default value is "ease-out".
-    overlay: true               // Toggle this to false to hide the initial instruction overlay
+    overlay: true,              // Toggle this to false to hide the initial instruction overlay
+    centerX: 0,                 // Start the image at the middle, when repeat is false. Set this to -1/4 of the image's width in pixels. The default value is 0.
   });
 ````
 
