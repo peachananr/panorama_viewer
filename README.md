@@ -5,7 +5,7 @@ Created by [Pete R.](http://www.thepetedesign.com), Founder of [Travelistly](htt
 [![Panorama Viewer](http://www.thepetedesign.com/images/panorama_viewer_image.png "Panorama Viewer")](http://www.thepetedesign.com/demos/panorama_viewer_demo.html)
 
 ## Demo
-[View demo](http://www.thepetedesign.com/demos/panorama_viewer_demo.html)
+[View demo](http://peachananr.github.io/panorama_viewer/demo/demo.html)
 
 ## Compatibility
 Modern browsers such as Chrome, Firefox, and Safari on both desktop and smartphones have been tested. I have not tested this on IE.
